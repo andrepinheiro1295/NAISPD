@@ -1,0 +1,143 @@
+html{
+    font-size: 2.5vh;
+    z-index: 0;
+}
+
+.caixa {
+    
+    top: 100px;
+    margin-left: 170px;
+    margin-right: 100px;
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #213555;
+    color: #ffffff;
+    position: relative;
+}
+
+.caixa .form {
+    margin-left: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 10px; /* Gap between grid items */
+}
+
+.caixa label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc; /* Adjust as needed */
+}
+
+.caixa input,
+.caixa textarea {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.caixa button {
+    background-color: #026919;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.caixa h2{
+    margin-left: 40px;
+}
+.caixa button:hover {
+    background-color: #10c000;
+}
+
+.caixa .form .form-column {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px; /* Adjust margin as needed */
+}
+
+@media (max-width: 800px) {
+    .caixa .form {
+        grid-template-columns: 1fr; /* Single column */
+    }
+    .caixa .form .form-column {
+        margin: 0; /* Reset margin on smaller screens */
+    }
+}
+
+#pesquisa-container-resultados{
+    margin-top: 120px;
+    margin-left: 170px;
+    margin-right: 100px;
+    height: 300px;
+    background-color: #213555;
+    border: #F0F0F0 solid 2px;
+    position: relative;
+}
+
+#pesquisa-container-resultados #bloco-filtros {
+    display: flex;
+}
+
+#blocos-de-ordenacao {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+
+.bloco-de-ordenacao {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+}
+
+.titulo-de-ordenacao {
+    font-weight: bold;
+}
+
+#tabela-de-resultados {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.linha-de-resultado {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+}
+
+.item-de-resultado {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    background-color: #4F709C;
+    color: #ccc !important;
+}
+
+.item-de-resultado:last-child {
+    border-right: none; 
+}
+
+#acessar-atendido{
+    height: 17px;
+    margin-left: 5px;
+}
+
+.resultado-nome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+
+}

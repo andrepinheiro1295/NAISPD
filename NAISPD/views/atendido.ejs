@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padre Moreira - NAISPD</title>
+    <link rel="stylesheet" href="/css/atendido.css">
+</head>
+<body>
+
+<div id="menu-container"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    fetch('base.ejs')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('menu-container').innerHTML = data;
+
+            var btnExp = document.querySelector('#btn-exp');
+            var menuSide = document.querySelector('.menu-lateral');
+
+            btnExp.addEventListener('click', function () {
+                console.log("botão clicado");
+                menuSide.classList.toggle('expandir');
+            });
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
+});
+</script>
+    <div id="container">
+        <div id="dados">
+            
+            <div class="item-dados">
+                <span>Nome:</span><input type="text" name="nome">
+            </div>
+            
+            <div class="item-dados">
+                <span>Data de nascimento:</span><input type="date" name="nome">
+            </div>
+          
+            <div class="item-dados">
+                <span>Telefone:</span><input type="int" name="nome">
+            </div>
+         
+            <div class="item-dados">
+                <span>Raça:</span><input type="text" name="nome">
+            </div>
+            
+            <div class="item-dados">
+                <span>Sexo:</span><select><option value="metodo1">Masculino</option>
+                <option value="info">Feminino</option></select>
+            </div>
+            
+            <div class="item-dados">
+                <span>Deficiência:</span><input type="text" name="nome">
+            </div>
+          
+            <div class="item-dados">
+                <span>Responsável:</span><input type="text" name="nome">
+            </div>
+            <div class="item-dados">
+                <span>RG:</span><input type="text" name="nome">
+            </div>
+            <div class="item-dados">
+                <span>CPF:</span><input type="text" name="nome">
+            </div>
+            
+        </div>
+        <div id="obs">
+
+        </div>
+    </div>    
+</body>
+</html>

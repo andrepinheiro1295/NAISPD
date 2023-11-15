@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padre Moreira - NAISPD</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pesquisar.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+<div id="menu-container"></div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('./base.ejs')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+    
+                var btnExp = document.querySelector('#btn-exp');
+                var menuSide = document.querySelector('.menu-lateral');
+    
+                btnExp.addEventListener('click', function () {
+                    console.log("botão clicado");
+                    menuSide.classList.toggle('expandir');
+                });
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+    });
+</script>
+
+<div id="pesquisa-container-filtros">
+  
+        
+    <form action="/buscar" method="post" class="form-busca" onsubmit="console.log('Form submitted')">
+        <select name="idade" id="idade">
+            <option value="all">Todas as Idades</option>
+            <option value="10-18">10-18</option>
+            <option value="18-30">18-30</option>
+            <option value="18-60">18-60</option>
+            <option value="60+">60+</option>
+        </select>
+        <select name="tem-bpc">
+            <option value="metodo1">Tem BPC</option>
+            <option value="metodo2">Sim</option>
+            <option value="metodo3">Não</option>
+        </select>
+        
+        <input type="text" name="nome_buscar" placeholder="Nome">
+        <input type="text" name="responsavel_buscar" placeholder="Responsável">
+        <input type="text" name="raca_buscar" placeholder="Raça">
+        <input type="text" name="deficiencia_buscar" placeholder="Deficiência">
+        <input type="text" name="sexo_buscar" placeholder="Sexo">
+
+
+        <button id='buscar-btn'type="submit" >Buscar</button>
+    </form>
+
+    </div>
+    
+<div id="pesquisa-container-resultados">
+    <p class="entradas">Total de atendidos: <%= totalEntries %></p>
+    <div id="blocos-de-ordenacao">
+        <div class="bloco-de-ordenacao">
+            <div class="titulo-de-ordenacao">Nome</div>
+        </div>
+        <div class="bloco-de-ordenacao">
+            <div class="titulo-de-ordenacao">Idade</div>
+        </div>
+        <div class="bloco-de-ordenacao">
+            <div class="titulo-de-ordenacao">RG</div>
+        </div>
+        <div class="bloco-de-ordenacao">
+            <div class="titulo-de-ordenacao">CPF</div>
+        </div>
+    </div>
+    
+    <div id="tabela-de-resultados">
+        <% peopleData.forEach(function(person) { %>
+            <div class="linha-de-resultado">
+                <div class="item-de-resultado"><%= person.nome %></div>
+                <div class="item-de-resultado"><%= person.idade %></div>
+                <div class="item-de-resultado"><%= person.rg %></div>
+                <div class="item-de-resultado"><%= person.cpf %></div>
+            </div>
+        <% }); %>
+            
+    </div>
+    <div class="pagination-controls">
+        <div class="page-container">
+        <% const PAGE_SIZE = 20; %>
+        <% if (currentPage > 1) { %>
+            <a href="/?page=<%= currentPage - 1 %>"><i class="bi bi-arrow-left-square-fill"></i></a>
+        <% } %>
+            
+        <span>Page <%= currentPage %></span> 
+            
+        <% if (peopleData.length === PAGE_SIZE) { %>
+            <a href="/?page=<%= currentPage + 1 %>"></span><i class="bi bi-arrow-right-square-fill"></i></a>
+        <% } %>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

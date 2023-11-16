@@ -403,7 +403,7 @@ app.post('/salvar_pia', async (req, res) => {
     await queryDatabase(
       informacoesServicoQuery,
       [
-        informacoesServico.nome_servico,
+     informacoesServico.nome_servico,
         informacoesServico.endereco_servico,
         informacoesServico.email_servico,
         informacoesServico.telefone_servico,

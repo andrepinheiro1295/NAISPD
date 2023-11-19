@@ -90,6 +90,7 @@ O projeto segue a seguinte estrutura de diretórios:
 * views/: Armazena os arquivos de visualização EJS para as páginas do aplicativo.
 * app.js: O arquivo principal do aplicativo que contém a lógica e as configurações do servidor.
 
-## Licença
+## Licença e direitos de uso.
 
-Este projeto é licenciado.
+Este projeto não esta liberado para uso por terceiros além do NAISPD Superação.
+Todos os direitos estão reservados ao grupo 08 do Projeto Integrador II - 2/2023 - UNIVESP - na forma da Lei.

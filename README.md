@@ -2,11 +2,12 @@
 
 ## Sistema de Registro e Avaliação de Atendidos
 
-Este é um sistema desenvolvido em **Node.js** utilizando o framework **Express**, juntamente com o banco de dados **PostgreSQL** para o registro e avaliação de atendidos. O sistema permite a inserção, pesquisa, alteração e avaliação de informações relacionadas aos atendidos.
+Desenvolvemos é um sistema em **Node.js** utilizando o framework **Express**, juntamente com o banco de dados **PostgreSQL** para o registro e avaliação de atendidos. O sistema permite a inserção, pesquisa, alteração e avaliação de informações relacionadas aos atendidos. Nosso objetivo é automatizar os processos administrativos de uma instituição de apoio para pessoas com deficiência.
 
 ### Configuração do Banco de Dados
 
-Certifique-se de ter o **PostgreSQL** instalado e configurado em sua máquina. No arquivo `app.js`, as configurações do banco de dados estão definidas da seguinte forma:
+O banco de dados utilizado foi o **PostgreSQL** . Sugerimos que tenha ele instalado e configurado em sua máquina. 
+No arquivo `index.js`, as configurações do banco de dados estão definidas da seguinte forma:
 
 ```javascript
 const db = new pg.Client({
@@ -29,7 +30,8 @@ As principais dependências do projeto são:
 Certifique-se de ter essas dependências instaladas antes de executar o aplicativo. Você pode instalá-las executando o seguinte comando:
 
 ```bash
-    npm install express body-parser pg
+    npm i express body-parser pg
+    npm i nodemon
 ```
 
 ## Iniciando o Aplicativo
@@ -37,7 +39,7 @@ Certifique-se de ter essas dependências instaladas antes de executar o aplicati
 Certifique-se de ter o Node.js instalado em sua máquina. Para iniciar o aplicativo, execute o seguinte comando no terminal:
 
 ``` bash
-    node app.js
+    node index.js
 ```
 
 O aplicativo será iniciado e estará acessível em http://localhost:3000. Certifique-se de substituir a porta se necessário, de acordo com a configuração no arquivo app.js.

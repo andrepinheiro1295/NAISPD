@@ -88,12 +88,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="item-de-resultado"><%= person.idade %></div>
                     <div class="item-de-resultado"><%= person.rg %></div>
                     <div name="cpf" class="item-de-resultado"><%= person.cpf %>
-                        <form action="/alterar" method="GET">
-                            <input type="hidden" name="id" value="<%= person.id %>" />
-                            <button type="submit">
-                                <i class="bi bi-file-diff-fill"></i>
-                            </button>
-                        </form>
+                        <a href="/alterar?id=<%=person.id%>">
+                             <i class="bi bi-file-diff-fill"></i>
+                        </a>
                     </div>
                 </div>
             <% }); %>

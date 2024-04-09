@@ -39,183 +39,47 @@ document.addEventListener('DOMContentLoaded', function () {
         <section identificacao="identificacao">
             <h3>1. IDENTIFICAÇÃO</h3>
             
-            <form action="/salvar_pia" method="post">
-                <input type="hidden" name="id" value="<%= id %>">
+            <form action="/alterar/<%= person.id %>" method="post"> <!-- Make sure to include the person's ID -->
                 <br>
-                <label for="nome_usuario">Nome do Usuário:</label>
-                <input type="text" id="nome_usuario" name="nome" required>
-                <br>
-            
-                <label for="data_nascimento">Data de Nascimento:</label>
-                <input type="date" id="data_nascimento" name="dataNascimento" required>
-                <br>
-            
-                <label for="idade">Idade:</label>
-                <input type="number" id="idade" name="idade" required>
-                <br>
-            
-                <label for="filiacao">Filiação:</label>
-                <input type="text" id="filiacao" name="filiacao" required>
-                <br>
-            
-                <label for="endereco_familia">Endereço da Família:</label>
-                <input type="text" id="endereco_familia" name="enderecoFamilia" required>
-                <br>
-            
-        </section>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" value="<%= person.nome %>"><br>
+                
+                <label for="datanascimento">Data de Nascimento:</label>
+                <input type="date" id="datanascimento" name="datanascimento" value="<%= person.datanascimento %>"><br>
 
-        <section id="informacoes_familiares">
-            <h3>2. INFORMAÇÕES SOBRE FAMILIARES / REDE DE APOIO COMUNITÁRIO</h3>
-            <div class="table-container">
-              <table>
-                <thead>
-                  <tr >
-                    <th >Nº</th>
-                    <th>Nome</th>
-                    <th>D.Nasc.</th>
-                    <th>Parentesco/Vínculo</th>
-                    <th>Serviço socioassistencial que frequenta</th>
-                    <th>Telefones para contato</th>
-                    <th>Demanda Apresentada</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td><input type="text" name="familiar_nome_1"></td>
-                    <td><input type="date" name="familiar_data_nascimento_1"></td>
-                    <td><input type="text" name="familiar_parentesco_1"></td>
-                    <td><input type="text" name="familiar_servico_1"></td>
-                    <td><input type="text" name="familiar_telefone_1"></td>
-                    <td><input type="text" name="familiar_demanda_1"></td>
-                  </tr>
-            
-                </tbody>
-              </table>
-            </div>
-          </section>
-        <section id="propostas_pia">
-            <h3>3. Proposta(s) do PIA</h3>
-            <textarea name="propostas_pia" rows="5" cols="50"></textarea>
+
+                <!-- Other fields remain the same -->
+                <label for="eixo_deficiencia">Eixo Deficiência:</label>
+                <textarea name="eixo_deficiencia" id="eixo_deficiencia"><%= person.eixo_deficiencia %></textarea><br>
+                
+                <br>
+                <label for="eixo_deficiencia">Eixo Deficiência:</label>
+                <textarea name="eixo_deficiencia" id="eixo_deficiencia"><%= person.eixo_deficiencia %></textarea><br>
+                
+                <label for="eixo_familia">Eixo Família:</label>
+                <textarea name="eixo_familia" id="eixo_familia"><%= person.eixo_familia %></textarea><br>
+                
+                <label for="opiniao_atendido">Opinião Atendido:</label>
+                <textarea name="opiniao_atendido" id="opiniao_atendido"><%= person.opiniao_atendido %></textarea><br>
+                
+                <label for="opiniao_familia">Opinião Família:</label>
+                <textarea name="opiniao_familia" id="opiniao_familia"><%= person.opiniao_familia %></textarea><br>
+                
+                <label for="avaliacao_familia">Avaliação Família:</label>
+                <textarea name="avaliacao_familia" id="avaliacao_familia"><%= person.avaliacao_familia %></textarea><br>
+                
+                <label for="resumo_avaliacao">Resumo Avaliação:</label>
+                <textarea name="resumo_avaliacao" id="resumo_avaliacao"><%= person.resumo_avaliacao %></textarea><br>
+                
+                <label for="metas_acoes">Metas e Ações:</label>
+                <textarea name="metas_acoes" id="metas_acoes"><%= person.metas_acoes %></textarea><br>
+                
+                <label for="resultado">Resultado:</label>
+                <textarea name="resultado" id="resultado"><%= person.resultado %></textarea><br>
+
+                <button type="submit">Salvar</button> <!-- Submit button -->
+            </form>
         </section>
-        
-        <section id="interfaces_rede_executiva">
-            <h3>4. Interfaces com a rede executiva previstas no PIA</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ação/Encaminhamento necessário</th>
-                        <th>A quem se destina</th>
-                        <th>Órgão ou serviço indicado para o atendimento</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="acao_encaminhamento_1"></td>
-                        <td><input type="text" name="a_quem_destina_1"></td>
-                        <td><input type="text" name="orgao_servico_atendimento_1"></td>
-                    </tr>
-                  
-                </tbody>
-            </table>
-        </section>
-        <section id="opiniao_usuario">
-            <h3>5. Opinião do atendido sobre o PIA (apontar se há concordância ou não com as propostas, se houve participação ativa na formulação do plano, considerando suas possibilidades)</h3>
-            <textarea name="opiniao_usuario_pia" rows="5" cols="50"></textarea>
-        </section>
-        
-        <section id="opiniao_familia">
-            <h3>6. Opinião dos familiares sobre o PIA</h3>
-            <textarea name="opiniao_familia_pia" rows="5" cols="50"></textarea>
-        </section>
-        
-        <section id="equipe_tecnica">
-            <h3>EQUIPE TÉCNICA RESPONSÁVEL</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>NOME</th>
-                        <th>FUNÇÃO</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="nome_equipe_1"></td>
-                        <td><input type="text" name="funcao_equipe_1"></td>
-                    </tr>
-           
-                </tbody>
-            </table>
-        </section>
-        
-        <section id="informacoes_servico">
-            <h3>INFORMAÇÕES DO SERVIÇO</h3>
-            <p>NOME DO SERVIÇO:</p>
-            <input type="text" name="nome_servico">
-            <p>ENDEREÇO:</p>
-            <input type="text" name="endereco_servico">
-            <p>E-MAIL:</p>
-            <input type="email" name="email_servico">
-            <p>TELEFONE:</p>
-            <input type="tel" name="telefone_servico">
-        </section>
-        
-        <section id="plano_atendimento">
-            <h3>PLANO DE ATENDIMENTO INDIVIDUAL</h3>
-            <p>EIXO PESSOA COM DEFICIÊNCIA</p>
-          
-        </section>
-        <section id="eixo_familia">
-            <h3>EIXO FAMÍLIA</h3>
-     
-        </section>
-        <section id="eixo_pessoa_com_deficiencia">
-            <h3>EIXO PESSOA COM DEFICIÊNCIA</h3>
-            <p>1. Motivo do encaminhamento para o serviço</p>
-            <textarea name="motivo_encaminhamento" rows="5" cols="50"></textarea>
-            
-            <p>2. Histórico da pessoa:</p>
-            <textarea name="historico_pessoa" rows="5" cols="50"></textarea>
-            
-            <p>3. Quanto à preservação e fortalecimento dos vínculos familiares:</p>
-         
-            
-            <p>4. Quanto à preservação e fortalecimento dos vínculos comunitários:</p>
-    
-            
-            <p>5. Observações quanto ao acesso aos direitos da pessoa com:</p>
-           
-        </section>  
-        
-        <section id="avaliacao_familia">
-            <h3>AVALIAÇÃO DA FAMÍLIA</h3>
-            
-        </section>
-        
-        <section id="resumo_avaliacao">
-            <h3>RESUMO DA AVALIAÇÃO DAS AQUISIÇÕES DO USUÁRIO</h3>
-           
-        </section>
-        
-        <section id="metas_acoes_pactuadas">
-            <h3>METAS, AÇÕES PACTUADAS E ACOMPANHAMENTO</h3>
-           
-        </section>
-        
-        <section id="resultado">
-            <h3>RESULTADO</h3>
-            <p>Objetivo Alcançado:</p>
-            <textarea name="objetivo_alcancado" rows="5" cols="50"></textarea>
-        
-            <p>Objetivo Não Alcançado:</p>
-            <textarea name="objetivo_nao_alcancado" rows="5" cols="50"></textarea>
-            
-            <p>Avaliação:</p>
-            <textarea name="avaliacao" rows="5" cols="50"></textarea>
-        </section>
-        <button type="submit">Salvar</button>
-        </section>
-    </form>
     </div>
 </body>
 </html>

@@ -5,12 +5,12 @@ import pg from 'pg';
 const app = express();
 const port = 3000;
 
-// Set up middleware
+//Criando Middleware
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Database configuration
+// Configuração do Banco de Dados
 const db = new pg.Client({
   user: "postgres",
   host: "localhost",
@@ -19,10 +19,10 @@ const db = new pg.Client({
   port: 5432,
 });
 
-// Constants
+// Constantes
 const PAGE_SIZE = 20;
 
-// Routes
+// Rotas
 app.get('/', (req, res) => {
   let total_count;
 
@@ -42,14 +42,14 @@ app.get('/', (req, res) => {
 
       const peopleData = dataResult.rows;
 
-      const page = req.query.page || 1; // Get the requested page number from the query string
-      const offset = (page - 1) * PAGE_SIZE; // Calculate the offset for pagination
+      const page = req.query.page || 1; 
+      const offset = (page - 1) * PAGE_SIZE; 
       const paginatedData = peopleData.slice(offset, offset + PAGE_SIZE);
 
       res.render('pesquisar.ejs', {
         peopleData: paginatedData,
-        currentPage: parseInt(page), // Provide the current page to the EJS file
-        totalEntries: total_count // Pass the total count to the template
+        currentPage: parseInt(page), 
+        totalEntries: total_count 
       });
     });
   });
@@ -111,14 +111,13 @@ app.post('/buscar', (req, res) => {
 });
 
 app.get('/inserir', (req, res) => {
-  // Fetch data from the database
+
   db.query('SELECT id, nome, telefone, email, datanascimento, rg, cpf, EXTRACT(YEAR FROM AGE(NOW(), datanascimento)) AS idade FROM atendidos', (error, result) => {
     if (error) {
       console.error('Error fetching data:', error);
       return res.status(500).send('Error fetching data.');
     }
 
-    // Render the inserir page with the fetched data
     res.render('inserir.ejs', { peopleData: result.rows });
   });
 });
@@ -128,7 +127,6 @@ app.get('/inserir', (req, res) => {
 app.post('/inserir', (req, res) => {
   const { nome, telefone, email, datanascimento, rg, cpf } = req.body;
 
-  // Insert data into the database
   db.query(
     "INSERT INTO atendidos (nome, telefone, email, datanascimento, rg, cpf) VALUES ($1, $2, $3, $4, $5, $6)",
     [nome, telefone, email, datanascimento, rg, cpf],
@@ -138,14 +136,11 @@ app.post('/inserir', (req, res) => {
         return res.status(500).send('Error while inserting data.');
       }
 
-      // Redirect to the same page after insertion
       res.redirect('/inserir');
     }
   );
 });
 
-
-// GET endpoint to retrieve data for a specific record by ID
 app.get('/alterar', (req, res) => {
   const id = parseInt(req.query.id, 10);
   console.log(id);
@@ -170,8 +165,6 @@ app.get('/alterar', (req, res) => {
   });
 });
 
-
-// POST endpoint to update a specific record by ID
 app.post('/alterar/:id', (req, res) => {
   const id = req.params.id;
   const {

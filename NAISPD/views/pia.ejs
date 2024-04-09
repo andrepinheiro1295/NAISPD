@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <section identificacao="identificacao">
             <h3>1. IDENTIFICAÇÃO</h3>
             
-            <form action="/alterar/<%= person.id %>" method="post"> <!-- Make sure to include the person's ID -->
+            <form action="/alterar/<%= person.id %>" method="post"> 
                 <br>
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" value="<%= person.nome %>"><br>
@@ -47,8 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 <label for="datanascimento">Data de Nascimento:</label>
                 <input type="date" id="datanascimento" name="datanascimento" value="<%= person.datanascimento %>"><br>
 
-
-                <!-- Other fields remain the same -->
                 <label for="eixo_deficiencia">Eixo Deficiência:</label>
                 <textarea name="eixo_deficiencia" id="eixo_deficiencia"><%= person.eixo_deficiencia %></textarea><br>
                 
@@ -77,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <label for="resultado">Resultado:</label>
                 <textarea name="resultado" id="resultado"><%= person.resultado %></textarea><br>
 
-                <button type="submit">Salvar</button> <!-- Submit button -->
+                <button type="submit">Salvar</button> 
             </form>
         </section>
     </div>
